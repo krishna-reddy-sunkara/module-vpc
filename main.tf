@@ -19,7 +19,11 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = local.az_name[count.index]
   map_public_ip_on_launch = true # Makes it a public subnet
 
-  tags = {
-    Name = "public-subnet-1a"
-  }
+  tags = public_subnet_tags = merge(
+    local.common_tags,
+    {
+        Name = "${var.project}-${var.environment}-public-${local.az_name[count.index]}"
+    },
+    var.public_subnet_tags
+  )
 }
