@@ -12,6 +12,7 @@ locals {
     },
     var.vpc_tags
   )
+
   igw_final_tags = merge(
     local.common_tags,
     {
@@ -19,6 +20,7 @@ locals {
     },
     var.igw_tags
   )
+  
   az_name = slice(data.aws_availability_zones.available.names, 0, 2)
 
 #   public_subnet_tags = merge(
@@ -32,3 +34,8 @@ locals {
 
 
 
+# HOUSE A(krishna)============House B(charan)
+
+# aws
+# vpc A     ->  peering -->   vpc B
+# route tables
